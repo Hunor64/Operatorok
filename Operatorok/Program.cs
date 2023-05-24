@@ -36,7 +36,7 @@ namespace Operatorok
             bool vanEIlyen = false;
             foreach (var item in operatorLista)
             {
-                if (item.ElsoElem%10==0&&item.MasodikElem%10==0)
+                if (item.ElsoElem % 10 == 0 && item.MasodikElem % 10 == 0)
                 {
                     vanEIlyen = true;
                     break;
@@ -95,11 +95,118 @@ namespace Operatorok
             Console.WriteLine($"\t* -> {szorzasSzam} db");
             Console.WriteLine($"\t+ -> {osszeadasSzam} db");
 
+            //7
+            List<String> eredmenyekLista = new List<String>();
+            while (true)
+            {
+                Console.Write($"7. Feladat: Kérek egy kifejezést (pl.: 1 + 1): ");
+                string sor = Console.ReadLine();
+                if (sor.ToLower() == "vége")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine($"\t{Kiszamol(sor)}");
+                    eredmenyekLista.Add(Kiszamol(sor));
+                }
+            }
+
+            //8
+            File.WriteAllLines("eredmenyek.txt", eredmenyekLista);
+            Console.WriteLine("8. Feladat: eredmenyek.txt");
         }
-       public string Kiszamol(string input)
+
+        //6
+        static string Kiszamol(string input)
         {
             string eredmeny = "";
+            var felbont = input.Split(' ');
+            int elsoElem = int.Parse(felbont[0]);
+            string operatorJel = felbont[1];
+            int masodikElem = int.Parse(felbont[2]);
+            var szamolasEredmeny = "";
+            if (operatorJel == "mod")
+            {
+                try
+                {
+                    int szamolasEredmenye = elsoElem / masodikElem;
+                    szamolasEredmeny = szamolasEredmenye.ToString();
+                }
+                catch (Exception)
+                {
+                    szamolasEredmeny = "Egyéb Hiba!";
+                    throw;
+                }
+            }
+            else if (operatorJel == "/")
+            {
+                try
+                {
+                    double szamolasEredmenye = Convert.ToDouble(elsoElem) / Convert.ToDouble(masodikElem);
+                    szamolasEredmeny = szamolasEredmenye.ToString();
+                }
+                catch (Exception)
+                {
+                    szamolasEredmeny = "Egyéb Hiba!";
+                    throw;
+                }
 
+            }
+            else if (operatorJel == "div")
+            {
+                try
+                {
+                    double szamolasEredmenye = Convert.ToDouble(elsoElem) / Convert.ToDouble(masodikElem);
+                    szamolasEredmeny = szamolasEredmenye.ToString();
+                }
+                catch (Exception)
+                {
+                    szamolasEredmeny = "Egyéb Hiba!";
+                    throw;
+                }
+            }
+            else if (operatorJel == "-")
+            {
+                try
+                {
+                    double szamolasEredmenye = Convert.ToDouble(elsoElem) - Convert.ToDouble(masodikElem);
+                    szamolasEredmeny = szamolasEredmenye.ToString();
+                }
+                catch (Exception)
+                {
+                    szamolasEredmeny = "Egyéb Hiba!";
+                    throw;
+                }
+            }
+            else if (operatorJel == "*")
+            {
+                try
+                {
+                    double szamolasEredmenye = Convert.ToDouble(elsoElem) * Convert.ToDouble(masodikElem);
+                    szamolasEredmeny = szamolasEredmenye.ToString();
+                }
+                catch (Exception)
+                {
+                    szamolasEredmeny = "Egyéb Hiba!";
+                    throw;
+                }
+            }
+            else if (operatorJel == "+")
+            {
+                try
+                {
+                    double szamolasEredmenye = Convert.ToDouble(elsoElem) + Convert.ToDouble(masodikElem);
+                    szamolasEredmeny = szamolasEredmenye.ToString();
+                }
+                catch (Exception)
+                {
+                    szamolasEredmeny = "Egyéb Hiba!";
+                    throw;
+                }
+            }
+
+            eredmeny = $"{elsoElem} {operatorJel} {masodikElem} = {szamolasEredmeny}";
             return eredmeny;
         }
     }
