@@ -51,6 +51,56 @@ namespace Operatorok
             {
                 Console.WriteLine("Nincsen ilyen kifejezés!");
             }
+
+            //5
+            int modSzam = 0;
+            int osztasSzam = 0;
+            int egeszOsztasSzam = 0;
+            int kivonasSzam = 0;
+            int szorzasSzam = 0;
+            int osszeadasSzam = 0;
+            foreach (var item in operatorLista)
+            {
+                if (item.OperatorJel == "mod")
+                {
+                    modSzam++;
+                }
+                else if (item.OperatorJel == "/")
+                {
+                    osztasSzam++;
+                }
+                else if (item.OperatorJel == "div")
+                {
+                    egeszOsztasSzam++;
+                }
+                else if (item.OperatorJel == "-")
+                {
+                    kivonasSzam++;
+                }
+                else if (item.OperatorJel == "*")
+                {
+                    szorzasSzam++;
+                }
+                else if (item.OperatorJel == "+")
+                {
+                    osszeadasSzam++;
+                }
+
+            }
+            Console.WriteLine("5. Feladat: Statisztika");
+            Console.WriteLine($"\tmod -> {modSzam} db");
+            Console.WriteLine($"\t/ -> {osztasSzam} db");
+            Console.WriteLine($"\tdiv -> {egeszOsztasSzam} db");
+            Console.WriteLine($"\t- -> {kivonasSzam} db");
+            Console.WriteLine($"\t* -> {szorzasSzam} db");
+            Console.WriteLine($"\t+ -> {osszeadasSzam} db");
+
+        }
+       public string Kiszamol(string input)
+        {
+            string eredmeny = "";
+
+            return eredmeny;
         }
     }
 }
